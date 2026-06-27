@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://byi6w5jk387m2"
+path="res://.godot/imported/patch-sand-foliage.obj-959b4a703ab1d21261d43ce62468f69b.mesh"
+
+[deps]
+
+files=["res://.godot/imported/patch-sand-foliage.obj-959b4a703ab1d21261d43ce62468f69b.mesh"]
+
+source_file="res://public/image/kenney_pirate-kit/Models/OBJ format/patch-sand-foliage.obj"
+dest_files=["res://.godot/imported/patch-sand-foliage.obj-959b4a703ab1d21261d43ce62468f69b.mesh", "res://.godot/imported/patch-sand-foliage.obj-959b4a703ab1d21261d43ce62468f69b.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
