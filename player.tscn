@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3y14e5w02pks"]
+[gd_scene format=3 uid="uid://d3y14e5w02pks"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_abcd"]
-[ext_resource type="PackedScene" path="res://public/image/kenney_pirate-kit/Models/GLB format/ship-pirate-medium.glb" id="2_model"]
+[ext_resource type="Script" uid="uid://i4fawvg3a5gc" path="res://player.gd" id="1_abcd"]
+[ext_resource type="PackedScene" uid="uid://blvyadcfooqb1" path="res://public/image/kenney_pirate-kit/Models/GLB format/ship-pirate-medium.glb" id="2_model"]
+[ext_resource type="PackedScene" uid="uid://yod23gfnthf6" path="res://public/image/kenney_pirate-kit/Models/GLB format/cannon.glb" id="3_cannon"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1"]
 size = Vector3(2, 2, 4)
@@ -14,19 +15,33 @@ properties/1/path = NodePath(".:rotation")
 properties/1/spawn = true
 properties/1/replication_mode = 1
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" unique_id=780494155]
 script = ExtResource("1_abcd")
 
-[node name="ship-pirate-medium" parent="." instance=ExtResource("2_model")]
+[node name="ship-pirate-medium" parent="." unique_id=254136250 instance=ExtResource("2_model")]
+transform = Transform3D(0.99663913, -0.049242128, 0.06546501, 0.04964559, 0.9987569, -0.0045494456, -0.06515956, 0.0077842036, 0.9978446, -0.041334152, 0.04825878, 0.03153038)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CannonRight" parent="." unique_id=519790598 instance=ExtResource("3_cannon")]
+transform = Transform3D(0.01159007, -0.025171809, 0.7569004, 0.049816832, 0.81460977, 0.02262086, -0.79860735, 0.05044976, 0.01239586, 1.4517443, 2.2342322, -0.66492677)
+metadata/_edit_group_ = true
+
+[node name="SpawnPoint" type="Marker3D" parent="CannonRight" unique_id=1653815632]
+transform = Transform3D(0.8579815, 0.5133198, 0.019245846, -0.5134643, 0.8581051, 0.0031435173, -0.014901326, -0.012579139, 0.9998099, 2.3841858e-07, -2.3841858e-07, 1.5000005)
+
+[node name="CannonLeft" parent="." unique_id=1702005219 instance=ExtResource("3_cannon")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -1.2, 0.8, 0)
+
+[node name="SpawnPoint" type="Marker3D" parent="CannonLeft" unique_id=1633058549]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8270271, 1.8005619, 3.3824062)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1024677605]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_1")
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=985533114]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 15, 15)
 projection = 1
 size = 20.0
 
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=2142027301]
 replication_config = SubResource("SceneReplicationConfig_1")

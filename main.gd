@@ -55,16 +55,35 @@ func _start_game():
 	map.name = "Map"
 	game_container.add_child(map)
 	
+	# 태양(DirectionalLight) 추가
 	var sun = DirectionalLight3D.new()
 	sun.rotation_degrees = Vector3(-45, 45, 0)
 	map.add_child(sun)
 	
+	# 기본 하늘(Environment) 세팅
 	var env = Environment.new()
-	var sky = Sky.new()
-	env.sky = sky
+	env.background_mode = Environment.BG_COLOR
+	env.background_color = Color(0.5, 0.7, 0.9) # 하늘색 배경
 	var we = WorldEnvironment.new()
 	we.environment = env
 	map.add_child(we)
+	
+	# 바다(Sea) 메쉬 추가
+	var sea = MeshInstance3D.new()
+	var plane_mesh = PlaneMesh.new()
+	plane_mesh.size = Vector2(500, 500) # 바다 크기
+	sea.mesh = plane_mesh
+	
+	var sea_mat = StandardMaterial3D.new()
+	sea_mat.albedo_color = Color(0.15, 0.45, 0.75, 0.85) # 푸른 바다색
+	sea_mat.roughness = 0.1
+	sea_mat.metallic = 0.1
+	sea_mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	sea.material_override = sea_mat
+	
+	# 물이 배보다 약간 아래에 위치하도록 Y값 조정
+	sea.position.y = -0.2
+	map.add_child(sea)
 
 func _on_player_connected(id):
 	print("Player connected: ", id)
