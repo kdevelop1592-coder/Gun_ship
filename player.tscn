@@ -19,19 +19,21 @@ properties/1/replication_mode = 1
 script = ExtResource("1_abcd")
 
 [node name="ship-pirate-medium" parent="." unique_id=254136250 instance=ExtResource("2_model")]
+transform = Transform3D(-0.999283, 0, -0.037862517, 0, 1, 0, 0.037862517, 0, -0.999283, 0, 0, 0)
 
 [node name="CannonRight" parent="." unique_id=519790598 instance=ExtResource("3_cannon")]
-transform = Transform3D(0.021915043, 0.023033716, -0.7567544, 0.043564286, 0.8149877, 0.022468582, 0.7987565, -0.045081526, 0.019537108, -1.5801028, 1.9612243, -0.5178393)
+transform = Transform3D(0.018246343, 0, -0.79979193, 0, 0.8, 0, 0.79979193, 0, 0.018246343, -2.0400474, 2.1, 0.5856912)
 metadata/_edit_group_ = true
 
 [node name="SpawnPoint" type="Marker3D" parent="CannonRight" unique_id=1653815632]
-transform = Transform3D(0.18146622, 0.16335058, 0.969738, -0.7520946, 0.6583844, 0.029835898, -0.63358486, -0.7347478, 0.24232806, 0.1029799, 0.57840633, 1.3168886)
+transform = Transform3D(-4.37114e-08, 0, 1.0000002, 0, 1.0000002, 0, -1.0000002, 0, -4.37114e-08, 0.07230729, 0.67117023, 1.1861255)
 
 [node name="CannonLeft" parent="." unique_id=1702005219 instance=ExtResource("3_cannon")]
-transform = Transform3D(0.033404946, 0, 0.69573146, 0, 0.81270045, 0, -0.8120592, 0, 0.028619654, 1.6747167, 1.9889443, -0.59247166)
+transform = Transform3D(-0.010595238, 0, 0.79992986, 0, 0.8, 0, -0.79992986, 0, -0.010595238, 2.0213103, 2.1, 0.5732863)
+metadata/_edit_group_ = true
 
 [node name="SpawnPoint" type="Marker3D" parent="CannonLeft" unique_id=1633058549]
-transform = Transform3D(0.68195564, 0, -0.73139364, 0, 0.9999999, 0, 0.73139346, 0, 0.681956, 0.08593741, 0.68099594, 1.2017224)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.037907243, 0.6429796, 1.3706508)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1024677605]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

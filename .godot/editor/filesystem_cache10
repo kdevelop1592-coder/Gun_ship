@@ -1,11 +1,11 @@
 9cad1ddce9e5a63143ba340c9520626b
-::res://::1782607875
+::res://::1782612154
 cannonball.gd::GDScript::2267842357435722549::1782537000::0::1::::<>RigidBody3D<><>0<>0<><>::
 cannonball.tscn::PackedScene::4906400352383706992::1782537040::0::1::::<><><>0<>0<><>::res://cannonball.gd<>res://public/image/kenney_pirate-kit/Models/GLB format/cannon-ball.glb
 main.gd::GDScript::5854536788066129911::1782537456::0::1::::<>Node<><>0<>0<><>::
 main.tscn::PackedScene::188688864878231389::1782536343::0::1::::<><><>0<>0<><>::res://main.gd
-player.gd::GDScript::621682477200485638::1782538288::0::1::::<>CharacterBody3D<><>0<>0<><>::
-player.tscn::PackedScene::9175725426348414282::1782538580::0::1::::<><><>0<>0<><>::uid://i4fawvg3a5gc::::res://player.gd<>uid://blvyadcfooqb1::::res://public/image/kenney_pirate-kit/Models/GLB format/ship-pirate-medium.glb<>uid://yod23gfnthf6::::res://public/image/kenney_pirate-kit/Models/GLB format/cannon.glb
+player.gd::GDScript::621682477200485638::1782612089::0::1::::<>CharacterBody3D<><>0<>0<><>::
+player.tscn::PackedScene::9175725426348414282::1782611942::0::1::::<><><>0<>0<><>::uid://i4fawvg3a5gc::::res://player.gd<>uid://blvyadcfooqb1::::res://public/image/kenney_pirate-kit/Models/GLB format/ship-pirate-medium.glb<>uid://yod23gfnthf6::::res://public/image/kenney_pirate-kit/Models/GLB format/cannon.glb
 README.md::TextFile::-1::1782536664::0::1::::<><><>0<>0<><>::
 ::res://docs/::1782536777
 Area2D를 활용한 국소 중력 제어 및 행성 중력 시스템 구현 전략 보고서.md::TextFile::-1::1779540811::0::1::::<><><>0<>0<><>::

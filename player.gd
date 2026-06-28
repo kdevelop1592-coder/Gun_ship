@@ -5,10 +5,6 @@ const TURN_SPEED = 2.0
 const ZOOM_SPEED = 2.0
 const MIN_ZOOM = 5.0
 const MAX_ZOOM = 40.0
-
-@export var elevation_deg: float = 15.0 # 대포알 위아래 발사각 (도 단위)
-@export var forward_deg: float = 20.0   # 대포알 앞뒤 발사각 (도 단위, 양수면 앞쪽)
-
 @onready var camera = $Camera3D
 var camera_offset = Vector3.ZERO
 var wake_particles: GPUParticles3D
@@ -16,18 +12,8 @@ var wake_particles: GPUParticles3D
 func _ready():
 	setup_wake_particles()
 	
-	# 시각적 요소(배, 대포)들을 묶어서 한번에 180도 회전 (앞방향 -Z를 맞추기 위함)
-	var visuals = Node3D.new()
-	visuals.name = "Visuals"
-	add_child(visuals)
-	
-	for node_name in ["ship-pirate-medium", "CannonLeft", "CannonRight"]:
-		var node = get_node_or_null(node_name)
-		if node:
-			remove_child(node)
-			visuals.add_child(node)
-			
-	visuals.rotation_degrees.y = 180
+	# 시각적 요소(배, 대포)들을 묶어서 180도 회전하던 꼼수 코드를 완전히 제거했습니다!
+	# 이제 에디터에 배치된 그대로의 위치와 계층 구조를 사용합니다.
 	
 	if is_multiplayer_authority():
 		camera.current = true
@@ -129,38 +115,31 @@ func fire_cannon(side: int):
 		get_tree().root.add_child(ball)
 		
 	var spawn_node: Node3D = null
-	if side == -1 and has_node("Visuals/CannonLeft/SpawnPoint"):
-		spawn_node = get_node("Visuals/CannonLeft/SpawnPoint")
-	elif side == 1 and has_node("Visuals/CannonRight/SpawnPoint"):
-		spawn_node = get_node("Visuals/CannonRight/SpawnPoint")
+	if side == -1 and has_node("CannonLeft/SpawnPoint"):
+		spawn_node = get_node("CannonLeft/SpawnPoint")
+	elif side == 1 and has_node("CannonRight/SpawnPoint"):
+		spawn_node = get_node("CannonRight/SpawnPoint")
 		
 	if spawn_node:
 		# 시작 위치는 에디터의 SpawnPoint 위치를 그대로 사용합니다.
 		ball.global_position = spawn_node.global_position
 		
-		# === [코드로 발사각 직접 조절] ===
-		# 스크립트 상단에 추가한 @export 변수(elevation_deg, forward_deg)를 사용합니다.
+		# === [발사 방향 설정] ===
+		# 눈에 보이지 않는 'SpawnPoint(Marker3D)' 노드가 바라보는 방향(-X축)을 사용합니다!
+		# 대포 모델 자체는 가만히 두고, SpawnPoint만 회전시키면 포탄이 날아가는 방향(고각/편각)을 마음대로 바꿀 수 있습니다.
+		var shoot_dir = -spawn_node.global_transform.basis.x.normalized()
 		
-		# 배의 현재 좌우 방향 (side: -1이면 왼쪽, 1이면 오른쪽)
-		var shoot_dir = global_transform.basis.x * side
-		
-		# 편각(앞뒤) 적용: Y축을 기준으로 회전시켜 앞으로 휘게 만듭니다.
-		shoot_dir = shoot_dir.rotated(Vector3.UP, deg_to_rad(forward_deg * side))
-		
-		# 고각(위아래) 적용: 수학의 탄젠트를 이용해 정확한 각도만큼 위로 올려줍니다.
-		shoot_dir.y += tan(deg_to_rad(elevation_deg))
-		
-		ball.linear_velocity = shoot_dir.normalized() * 30.0
+		ball.linear_velocity = shoot_dir * 30.0
 	else:
 		# SpawnPoint가 없을 경우를 대비한 기존 로직
 		var right_dir = global_transform.basis.x * side
 		var shoot_dir = right_dir + Vector3(0, 0.2, 0)
 		
 		var spawn_pos = global_position
-		if side == -1 and has_node("Visuals/CannonLeft"):
-			spawn_pos = get_node("Visuals/CannonLeft").global_position
-		elif side == 1 and has_node("Visuals/CannonRight"):
-			spawn_pos = get_node("Visuals/CannonRight").global_position
+		if side == -1 and has_node("CannonLeft"):
+			spawn_pos = $CannonLeft.global_position
+		elif side == 1 and has_node("CannonRight"):
+			spawn_pos = $CannonRight.global_position
 		else:
 			spawn_pos = global_position + right_dir * 2.5 + Vector3(0, 1.5, 0)
 		
