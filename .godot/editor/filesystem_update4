@@ -1,4 +1,2 @@
-res://player.gd
 res://player.tscn
-res://cannonball.tscn
-res://main.gd
+res://player.gd

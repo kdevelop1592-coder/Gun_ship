@@ -1,17 +1,39 @@
 9cad1ddce9e5a63143ba340c9520626b
-::res://::1782536381
-main.gd::GDScript::5854536788066129911::1782536330::0::1::::<>Node<><>0<>0<><>::
+::res://::1782607875
+cannonball.gd::GDScript::2267842357435722549::1782537000::0::1::::<>RigidBody3D<><>0<>0<><>::
+cannonball.tscn::PackedScene::4906400352383706992::1782537040::0::1::::<><><>0<>0<><>::res://cannonball.gd<>res://public/image/kenney_pirate-kit/Models/GLB format/cannon-ball.glb
+main.gd::GDScript::5854536788066129911::1782537456::0::1::::<>Node<><>0<>0<><>::
 main.tscn::PackedScene::188688864878231389::1782536343::0::1::::<><><>0<>0<><>::res://main.gd
-player.gd::GDScript::621682477200485638::1782536370::0::1::::<>CharacterBody3D<><>0<>0<><>::
-player.tscn::PackedScene::9175725426348414282::1782536372::0::1::::<><><>0<>0<><>::res://player.gd
+player.gd::GDScript::621682477200485638::1782538288::0::1::::<>CharacterBody3D<><>0<>0<><>::
+player.tscn::PackedScene::9175725426348414282::1782538580::0::1::::<><><>0<>0<><>::uid://i4fawvg3a5gc::::res://player.gd<>uid://blvyadcfooqb1::::res://public/image/kenney_pirate-kit/Models/GLB format/ship-pirate-medium.glb<>uid://yod23gfnthf6::::res://public/image/kenney_pirate-kit/Models/GLB format/cannon.glb
+README.md::TextFile::-1::1782536664::0::1::::<><><>0<>0<><>::
+::res://docs/::1782536777
+Area2D를 활용한 국소 중력 제어 및 행성 중력 시스템 구현 전략 보고서.md::TextFile::-1::1779540811::0::1::::<><><>0<>0<><>::
+ButtonEffectsModule 기술 설계 사양서.md::TextFile::-1::1779537543::0::1::::<><><>0<>0<><>::
+Godot 2D AI의 마법_ NavigationAgent2D와 Area2D로 지능적인 적 만들기.md::TextFile::-1::1779528795::0::1::::<><><>0<>0<><>::
+Godot 4.5 추상 클래스를 활용한 견고한 게임 아키텍처 설계 가이드라인.md::TextFile::-1::1779538147::0::1::::<><><>0<>0<><>::
+Godot 4.6 기반 고품질 버튼 인터랙션 구현 가이드.md::TextFile::-1::1779528781::0::1::::<><><>0<>0<><>::
+Godot 엔진 기반 모듈형 데이터 영속성 시스템 설계 사양서.md::TextFile::-1::1779533870::0::1::::<><><>0<>0<><>::
+Godot 엔진 기반 적 캐릭터 상호 회피 시스템(Avoidance) 구현 명세서.md::TextFile::-1::1779528812::0::1::::<><><>0<>0<><>::
+Godot 엔진 기반 트라우마 중심 스크린 셰이크 시스템 기술 구현 명세서.md::TextFile::-1::1779538341::0::1::::<><><>0<>0<><>::
+godot_4.7.md::TextFile::-1::1781872126::0::1::::<><><>0<>0<><>::
+godot_grass_guide.md::TextFile::-1::1781331250::0::1::::<><><>0<>0<><>::
+UI 시각적 완성도 향상을 위한 컴포넌트 기반 버튼 이펙트 모듈 개발 가이드.md::TextFile::-1::1780319750::0::1::::<><><>0<>0<><>::
+[가이드] Godot 인스펙터 최적화_ `_validate_property`를 활용한 동적 도구 설계.md::TextFile::-1::1779534152::0::1::::<><><>0<>0<><>::
+[기술 표준] 고도 엔진 메모리 관리_ RefCounted 및 weakref 활용 가이드.md::TextFile::-1::1779528763::0::1::::<><><>0<>0<><>::
+게임 수치 밸런스 및 버프 시스템 운영 가이드_ 커브 샘플링과 로직 응집화.md::TextFile::-1::1779528750::0::1::::<><><>0<>0<><>::
+고도 엔진(Godot Engine) 멀티스레딩 아키텍처 설계 및 성능 최적화 가이드.md::TextFile::-1::1779531753::0::1::::<><><>0<>0<><>::
+그래픽 최적화 표준 지침서_ GDScript 연산의 GPU 병렬 처리 전환 및 최적화 전략.md::TextFile::-1::1781325474::0::1::::<><><>0<>0<><>::
+다중 캐릭터 상호작용 및 애니메이션 스타일 구현을 위한 잔디 변위 관리 시스템 설계안.md::TextFile::-1::1781326894::0::1::::<><><>0<>0<><>::
+시스템 성능 최적화 보고서_ CPU 효율 극대화 및 스터터링 방지를 위한 멀티스레드 운용 전략.md::TextFile::-1::1780319713::0::1::::<><><>0<>0<><>::
 ::res://public/::1782536079
 ::res://public/image/::1782536082
-::res://public/image/kenney_pirate-kit/::1782536086
+::res://public/image/kenney_pirate-kit/::1782536385
 License.txt::TextFile::-1::1782535945::0::1::::<><><>0<>0<><>::
 Preview.png::CompressedTexture2D::7927497880834732695::1782535949::1782536385::1::::<><><>0<>0<>ad72fd2045f590ef695689bb8479fd4d<>res://.godot/imported/Preview.png-0d6687a8fbde9298354c87000e9dda4f.ctex::
 Sample.png::CompressedTexture2D::5575150544984661340::1782535950::1782536385::1::::<><><>0<>0<>3a65c6e04565305d2f816c717c238cf9<>res://.godot/imported/Sample.png-67c3b9d22d80da0ee84259e45f924afb.ctex::
 ::res://public/image/kenney_pirate-kit/Models/::1782536086
-::res://public/image/kenney_pirate-kit/Models/FBX format/::1782536083
+::res://public/image/kenney_pirate-kit/Models/FBX format/::1782536429
 barrel.fbx::PackedScene::3069245061214916171::1782535945::1782536411::1::::<><><>0<>0<>fd83e2cc1d827b5339255088d7d99997<>res://.godot/imported/barrel.fbx-35fb72273924b2ed95528fbb49e56ca2.scn::uid://jm5syu4j56fu::::res://public/image/kenney_pirate-kit/Models/FBX format/Textures/colormap.png
 boat-row-large.fbx::PackedScene::445658329610211969::1782535945::1782536411::1::::<><><>0<>0<>eca37df044110d549ba9876e5a411962<>res://.godot/imported/boat-row-large.fbx-27ef5e83bf945d67dc4cbedd8a9b18ae.scn::uid://jm5syu4j56fu::::res://public/image/kenney_pirate-kit/Models/FBX format/Textures/colormap.png
 boat-row-small.fbx::PackedScene::6731900198513295908::1782535945::1782536410::1::::<><><>0<>0<>875f87d8c2fd30c23c4938b46776c0a0<>res://.godot/imported/boat-row-small.fbx-fbfee144e83064fd4d240aeb42720ded.scn::uid://jm5syu4j56fu::::res://public/image/kenney_pirate-kit/Models/FBX format/Textures/colormap.png
@@ -84,9 +106,9 @@ tower-middle.fbx::PackedScene::82921661603966150::1782535946::1782536402::1::::<
 tower-roof.fbx::PackedScene::3576204318811137568::1782535946::1782536401::1::::<><><>0<>0<>0b8410fd092eed6cdbf29007dbd003f0<>res://.godot/imported/tower-roof.fbx-29090f1dffa91b33ee7001577cf8a7cb.scn::uid://jm5syu4j56fu::::res://public/image/kenney_pirate-kit/Models/FBX format/Textures/colormap.png
 tower-top.fbx::PackedScene::6755105194166704127::1782535946::1782536401::1::::<><><>0<>0<>4ba33deefdc7ff36e6ae73ae3a33c863<>res://.godot/imported/tower-top.fbx-fe1faf7ed4b62620530b7c6cb7bdf6d5.scn::uid://jm5syu4j56fu::::res://public/image/kenney_pirate-kit/Models/FBX format/Textures/colormap.png
 tower-watch.fbx::PackedScene::418095432521097639::1782535946::1782536429::1::::<><><>0<>0<>520c3c8c914873516116646d8b8a3e64<>res://.godot/imported/tower-watch.fbx-a358d4848056e54a4746bdf4df6bff6b.scn::uid://jm5syu4j56fu::::res://public/image/kenney_pirate-kit/Models/FBX format/Textures/colormap.png
-::res://public/image/kenney_pirate-kit/Models/FBX format/Textures/::1782536083
+::res://public/image/kenney_pirate-kit/Models/FBX format/Textures/::1782536436
 colormap.png::CompressedTexture2D::658327072651652058::1782535946::1782536436::1::::<><><>0<>0<>3d6648f59ceec87679a61662efc614d7<>res://.godot/imported/colormap.png-eb8c2b1b85961ac01a35e560988d6c13.s3tc.ctex<*>res://.godot/imported/colormap.png-eb8c2b1b85961ac01a35e560988d6c13.etc2.ctex::
-::res://public/image/kenney_pirate-kit/Models/GLB format/::1782536084
+::res://public/image/kenney_pirate-kit/Models/GLB format/::1782536431
 barrel.glb::PackedScene::2028112234713299448::1782535946::1782536422::1::::<><><>0<>0<>61f25a5fc1e199b91df993f8d53700a7<>res://.godot/imported/barrel.glb-61bea755f10138987a216eec9d77d7b4.scn::uid://bw87pg88fvfy1::::res://public/image/kenney_pirate-kit/Models/GLB format/Textures/colormap.png
 boat-row-large.glb::PackedScene::1295503300096982046::1782535946::1782536412::1::::<><><>0<>0<>919461cf08f549511ef2d112a2e16664<>res://.godot/imported/boat-row-large.glb-f9b055c19ac99ff974fe9ddc244a3b45.scn::uid://bw87pg88fvfy1::::res://public/image/kenney_pirate-kit/Models/GLB format/Textures/colormap.png
 boat-row-small.glb::PackedScene::7391002364906416106::1782535946::1782536429::1::::<><><>0<>0<>2ffa7ed369252cee269eb61a06e434e3<>res://.godot/imported/boat-row-small.glb-765b3eefc8cf6ed8c933f47c93e8245a.scn::uid://bw87pg88fvfy1::::res://public/image/kenney_pirate-kit/Models/GLB format/Textures/colormap.png
@@ -159,9 +181,9 @@ tower-middle.glb::PackedScene::2836356953465589345::1782535947::1782536424::1:::
 tower-roof.glb::PackedScene::3534955041220327506::1782535947::1782536424::1::::<><><>0<>0<>ec613aaef6a2c02bdf4aefa5d170f06f<>res://.godot/imported/tower-roof.glb-b34a0e1b625cc64ce5d724f9dee73674.scn::uid://bw87pg88fvfy1::::res://public/image/kenney_pirate-kit/Models/GLB format/Textures/colormap.png
 tower-top.glb::PackedScene::1642906167141264968::1782535947::1782536423::1::::<><><>0<>0<>6398446b4b3f2cd7ebe1ffc60d5a84b6<>res://.godot/imported/tower-top.glb-64fa5d3d6ce3502590043cad4d19c5a2.scn::uid://bw87pg88fvfy1::::res://public/image/kenney_pirate-kit/Models/GLB format/Textures/colormap.png
 tower-watch.glb::PackedScene::6030136127620537226::1782535947::1782536423::1::::<><><>0<>0<>b623c3207e4fda8cde8a9ccbf992b59a<>res://.godot/imported/tower-watch.glb-abb058cf2433ef564f80054a3c1f53fc.scn::uid://bw87pg88fvfy1::::res://public/image/kenney_pirate-kit/Models/GLB format/Textures/colormap.png
-::res://public/image/kenney_pirate-kit/Models/GLB format/Textures/::1782536084
+::res://public/image/kenney_pirate-kit/Models/GLB format/Textures/::1782536436
 colormap.png::CompressedTexture2D::4000669807916415670::1782535947::1782536436::1::::<><><>0<>0<>479c84d6e96417d2977aa6393ca5d208<>res://.godot/imported/colormap.png-96cc4ca52e4bcc30fc003a000a7cf76b.s3tc.ctex<*>res://.godot/imported/colormap.png-96cc4ca52e4bcc30fc003a000a7cf76b.etc2.ctex::
-::res://public/image/kenney_pirate-kit/Models/OBJ format/::1782536086
+::res://public/image/kenney_pirate-kit/Models/OBJ format/::1782536390
 barrel.obj::Mesh::6008387869649733447::1782535947::1782536390::1::::<><><>0<>0<>ac906b88547a66d3c4f3247bdaf0d17f<>res://.godot/imported/barrel.obj-08fc12d53689291bbbce8f94b191f8cc.mesh<*>res://.godot/imported/barrel.obj-08fc12d53689291bbbce8f94b191f8cc.mesh::uid://emjkvkeqpqhi::::res://public/image/kenney_pirate-kit/Models/OBJ format/Textures/colormap.png
 boat-row-large.obj::Mesh::8687494815322550352::1782535947::1782536386::1::::<><><>0<>0<>ac6b45836bd678abbfba34085de7993e<>res://.godot/imported/boat-row-large.obj-2b03fc0cd1d3d0c4bd3cb752b27d3da3.mesh<*>res://.godot/imported/boat-row-large.obj-2b03fc0cd1d3d0c4bd3cb752b27d3da3.mesh::uid://emjkvkeqpqhi::::res://public/image/kenney_pirate-kit/Models/OBJ format/Textures/colormap.png
 boat-row-small.obj::Mesh::7294574642962413696::1782535947::1782536386::1::::<><><>0<>0<>450df37cdb83ce85d3aa8c598507cb02<>res://.godot/imported/boat-row-small.obj-2cced40ebe11e9cb05ff93694bfc26cf.mesh<*>res://.godot/imported/boat-row-small.obj-2cced40ebe11e9cb05ff93694bfc26cf.mesh::uid://emjkvkeqpqhi::::res://public/image/kenney_pirate-kit/Models/OBJ format/Textures/colormap.png
@@ -234,10 +256,10 @@ tower-middle.obj::Mesh::1297014601442555648::1782535949::1782536389::1::::<><><>
 tower-roof.obj::Mesh::761314069587394691::1782535949::1782536389::1::::<><><>0<>0<>52666dae7f7f1ef4ac522e49344b59e1<>res://.godot/imported/tower-roof.obj-c16f41b9570b08c14f3cad7228cc462c.mesh<*>res://.godot/imported/tower-roof.obj-c16f41b9570b08c14f3cad7228cc462c.mesh::uid://emjkvkeqpqhi::::res://public/image/kenney_pirate-kit/Models/OBJ format/Textures/colormap.png
 tower-top.obj::Mesh::8385418329645452557::1782535949::1782536389::1::::<><><>0<>0<>9d6e17b59bc3dd5d4611e2b52d5dfaa4<>res://.godot/imported/tower-top.obj-d46871a6388433cb76771037abefae92.mesh<*>res://.godot/imported/tower-top.obj-d46871a6388433cb76771037abefae92.mesh::uid://emjkvkeqpqhi::::res://public/image/kenney_pirate-kit/Models/OBJ format/Textures/colormap.png
 tower-watch.obj::Mesh::8733066663990698807::1782535949::1782536389::1::::<><><>0<>0<>5c555e8fa6ddbf6bfacbc2b8aa2ac004<>res://.godot/imported/tower-watch.obj-0afcab2f6d61e268f71868be8bcb8a76.mesh<*>res://.godot/imported/tower-watch.obj-0afcab2f6d61e268f71868be8bcb8a76.mesh::uid://emjkvkeqpqhi::::res://public/image/kenney_pirate-kit/Models/OBJ format/Textures/colormap.png
-::res://public/image/kenney_pirate-kit/Models/OBJ format/Textures/::1782536086
+::res://public/image/kenney_pirate-kit/Models/OBJ format/Textures/::1782536438
 colormap.png::CompressedTexture2D::306093337116922542::1782535949::1782536438::1::::<><><>0<>0<>dfc1e50232fc1588c51634c25c6cbd05<>res://.godot/imported/colormap.png-a32218d18994c75ce11ee07cd3d5333c.s3tc.ctex<*>res://.godot/imported/colormap.png-a32218d18994c75ce11ee07cd3d5333c.etc2.ctex::
 ::res://public/image/kenney_pirate-kit/Models/Textures/::1771304246
-::res://public/image/kenney_pirate-kit/Previews/::1782536087
+::res://public/image/kenney_pirate-kit/Previews/::1782536385
 barrel.png::CompressedTexture2D::9197293734469571683::1782535949::1782536384::1::::<><><>0<>0<>8b70b1e8ae170203db003467f116b9b8<>res://.godot/imported/barrel.png-802dfd41a9ee9e8d330eebecc3500b39.ctex::
 boat-row-large.png::CompressedTexture2D::1801920091913970036::1782535949::1782536384::1::::<><><>0<>0<>0e6a2977e6385a2333dc38b4d876f3e8<>res://.godot/imported/boat-row-large.png-e9f68514113745aad36b4a4d324e87fe.ctex::
 boat-row-small.png::CompressedTexture2D::1419524700620785248::1782535949::1782536384::1::::<><><>0<>0<>0d7a4303a9b22c2e9cacdfc80e1ad96c<>res://.godot/imported/boat-row-small.png-b3fb951cfe999c01be6790fc1a2ed58e.ctex::

@@ -6,6 +6,9 @@ const ZOOM_SPEED = 2.0
 const MIN_ZOOM = 5.0
 const MAX_ZOOM = 40.0
 
+@export var elevation_deg: float = 15.0 # 대포알 위아래 발사각 (도 단위)
+@export var forward_deg: float = 20.0   # 대포알 앞뒤 발사각 (도 단위, 양수면 앞쪽)
+
 @onready var camera = $Camera3D
 var camera_offset = Vector3.ZERO
 var wake_particles: GPUParticles3D
@@ -81,20 +84,35 @@ func setup_wake_particles():
 	add_child(wake_particles)
 
 var cannonball_scene = preload("res://cannonball.tscn")
+var active_cannon_side: int = 0 # 0: 양쪽, -1: 좌현, 1: 우현 (기본값 양쪽)
 
 func _input(event):
 	if not is_multiplayer_authority():
 		return
 	
+	# 포대 선택 키 처리 (Q: 좌현, E: 우현, R: 양쪽)
+	if event is InputEventKey and event.pressed and not event.echo:
+		if event.physical_keycode == KEY_Q:
+			active_cannon_side = -1
+			print("좌포대 선택됨")
+		elif event.physical_keycode == KEY_E:
+			active_cannon_side = 1
+			print("우포대 선택됨")
+		elif event.physical_keycode == KEY_R:
+			active_cannon_side = 0
+			print("양쪽 포대 선택됨")
+			
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 			camera.size -= ZOOM_SPEED
 		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 			camera.size += ZOOM_SPEED
 		elif event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			rpc("fire_cannon", -1) # 좌현 발사
-		elif event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
-			rpc("fire_cannon", 1)  # 우현 발사
+			if active_cannon_side == 0:
+				rpc("fire_cannon", -1) # 좌현 발사
+				rpc("fire_cannon", 1)  # 우현 발사
+			else:
+				rpc("fire_cannon", active_cannon_side) # 선택된 포대만 발사
 		
 		# Clamp zoom level
 		camera.size = clamp(camera.size, MIN_ZOOM, MAX_ZOOM)
@@ -110,22 +128,44 @@ func fire_cannon(side: int):
 	else:
 		get_tree().root.add_child(ball)
 		
-	# 방향 계산 (side가 -1이면 왼쪽, 1이면 오른쪽)
-	var right_dir = global_transform.basis.x * side
-	var shoot_dir = right_dir + Vector3(0, 0.2, 0)
-	
-	# 대포 노드의 실제 위치를 가져와서 발사 위치로 사용
-	var spawn_pos = global_position
-	if side == -1 and has_node("Visuals/CannonLeft"):
-		spawn_pos = get_node("Visuals/CannonLeft").global_position
-	elif side == 1 and has_node("Visuals/CannonRight"):
-		spawn_pos = get_node("Visuals/CannonRight").global_position
+	var spawn_node: Node3D = null
+	if side == -1 and has_node("Visuals/CannonLeft/SpawnPoint"):
+		spawn_node = get_node("Visuals/CannonLeft/SpawnPoint")
+	elif side == 1 and has_node("Visuals/CannonRight/SpawnPoint"):
+		spawn_node = get_node("Visuals/CannonRight/SpawnPoint")
+		
+	if spawn_node:
+		# 시작 위치는 에디터의 SpawnPoint 위치를 그대로 사용합니다.
+		ball.global_position = spawn_node.global_position
+		
+		# === [코드로 발사각 직접 조절] ===
+		# 스크립트 상단에 추가한 @export 변수(elevation_deg, forward_deg)를 사용합니다.
+		
+		# 배의 현재 좌우 방향 (side: -1이면 왼쪽, 1이면 오른쪽)
+		var shoot_dir = global_transform.basis.x * side
+		
+		# 편각(앞뒤) 적용: Y축을 기준으로 회전시켜 앞으로 휘게 만듭니다.
+		shoot_dir = shoot_dir.rotated(Vector3.UP, deg_to_rad(forward_deg * side))
+		
+		# 고각(위아래) 적용: 수학의 탄젠트를 이용해 정확한 각도만큼 위로 올려줍니다.
+		shoot_dir.y += tan(deg_to_rad(elevation_deg))
+		
+		ball.linear_velocity = shoot_dir.normalized() * 30.0
 	else:
-		spawn_pos = global_position + right_dir * 2.5 + Vector3(0, 1.5, 0)
-	
-	# 대포 포신 끝자락에서 나가도록 바깥쪽으로 약간 이동
-	ball.global_position = spawn_pos + right_dir * 1.0
-	ball.linear_velocity = shoot_dir.normalized() * 30.0
+		# SpawnPoint가 없을 경우를 대비한 기존 로직
+		var right_dir = global_transform.basis.x * side
+		var shoot_dir = right_dir + Vector3(0, 0.2, 0)
+		
+		var spawn_pos = global_position
+		if side == -1 and has_node("Visuals/CannonLeft"):
+			spawn_pos = get_node("Visuals/CannonLeft").global_position
+		elif side == 1 and has_node("Visuals/CannonRight"):
+			spawn_pos = get_node("Visuals/CannonRight").global_position
+		else:
+			spawn_pos = global_position + right_dir * 2.5 + Vector3(0, 1.5, 0)
+		
+		ball.global_position = spawn_pos + right_dir * 1.0
+		ball.linear_velocity = shoot_dir.normalized() * 30.0
 
 func _physics_process(delta):
 	if not is_multiplayer_authority():
