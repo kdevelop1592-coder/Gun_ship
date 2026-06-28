@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://uyyk0gbnorad"]
+
+[ext_resource type="Script" uid="uid://enemy_script_id" path="res://enemy.gd" id="1_abcd"]
+[ext_resource type="PackedScene" uid="uid://blvyadcfooqb1" path="res://public/image/kenney_pirate-kit/Models/GLB format/ship-pirate-medium.glb" id="2_model"]
+[ext_resource type="PackedScene" uid="uid://yod23gfnthf6" path="res://public/image/kenney_pirate-kit/Models/GLB format/cannon.glb" id="3_cannon"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1"]
+size = Vector3(2, 2, 4)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_1"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
+[node name="Enemy" type="CharacterBody3D"]
+script = ExtResource("1_abcd")
+
+[node name="ship-pirate-medium" parent="." unique_id=254136250 instance=ExtResource("2_model")]
+transform = Transform3D(-0.999283, 0, -0.037862517, 0, 1, 0, 0.037862517, 0, -0.999283, 0, 0, 0)
+
+[node name="CannonRight" parent="." unique_id=519790598 instance=ExtResource("3_cannon")]
+transform = Transform3D(0.018246343, 0, -0.79979193, 0, 0.8, 0, 0.79979193, 0, 0.018246343, -2.0400474, 2.1, 0.5856912)
+metadata/_edit_group_ = true
+
+[node name="SpawnPoint" type="Marker3D" parent="CannonRight" unique_id=1653815632]
+transform = Transform3D(-4.37114e-08, 0, 1.0000002, 0, 1.0000002, 0, -1.0000002, 0, -4.37114e-08, 0.07230729, 0.67117023, 1.1861255)
+
+[node name="CannonLeft" parent="." unique_id=1702005219 instance=ExtResource("3_cannon")]
+transform = Transform3D(-0.010595238, 0, 0.79992986, 0, 0.8, 0, -0.79992986, 0, -0.010595238, 2.0213103, 2.1, 0.5732863)
+metadata/_edit_group_ = true
+
+[node name="SpawnPoint" type="Marker3D" parent="CannonLeft" unique_id=1633058549]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.037907243, 0.6429796, 1.3706508)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1024677605]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_1")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=985533114]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 15, 15)
+projection = 1
+size = 20.0
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=2142027301]
+replication_config = SubResource("SceneReplicationConfig_1")

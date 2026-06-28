@@ -8,6 +8,8 @@ radius = 0.5
 
 [node name="Cannonball" type="RigidBody3D"]
 mass = 5.0
+contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("1_cb")
 
 [node name="cannon-ball" parent="." instance=ExtResource("2_cb_model")]

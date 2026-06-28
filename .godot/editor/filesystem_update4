@@ -1,2 +1,7 @@
 res://player.tscn
 res://player.gd
+res://cannonball.gd
+res://cannonball.tscn
+res://main.gd
+res://enemy.tscn
+res://enemy.gd

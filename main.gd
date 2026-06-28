@@ -12,6 +12,10 @@ var peer = ENetMultiplayerPeer.new()
 @onready var game_container = $GameContainer
 
 var player_scene = preload("res://player.tscn")
+var enemy_scene = preload("res://enemy.tscn")
+var hud_scene = preload("res://hud.tscn")
+var enemy_spawn_timer: Timer
+var enemy_count: int = 0
 
 func _ready():
 	multiplayer.peer_connected.connect(_on_player_connected)
@@ -50,6 +54,10 @@ func _on_join_pressed():
 func _start_game():
 	lobby_ui.hide()
 	
+	if hud_scene:
+		var hud = hud_scene.instantiate()
+		add_child(hud)
+		
 	# Load game map here if needed
 	var map = Node3D.new()
 	map.name = "Map"
@@ -84,6 +92,28 @@ func _start_game():
 	# 물이 배보다 약간 아래에 위치하도록 Y값 조정
 	sea.position.y = -0.2
 	map.add_child(sea)
+	
+	# 서버(호스트)일 경우에만 적 스폰 타이머 작동
+	if multiplayer.is_server():
+		enemy_spawn_timer = Timer.new()
+		enemy_spawn_timer.wait_time = 10.0 # 10초마다 스폰
+		enemy_spawn_timer.autostart = true
+		enemy_spawn_timer.timeout.connect(_on_spawn_enemy)
+		add_child(enemy_spawn_timer)
+
+func _on_spawn_enemy():
+	if not enemy_scene: return
+	
+	var enemy = enemy_scene.instantiate()
+	enemy_count += 1
+	enemy.name = "Enemy_" + str(enemy_count)
+	
+	# 플레이어 주변 무작위 위치 스폰 (반경 30~50)
+	var angle = randf() * PI * 2
+	var dist = randf_range(30.0, 50.0)
+	enemy.position = Vector3(cos(angle) * dist, 0, sin(angle) * dist)
+	
+	game_container.add_child(enemy)
 
 func _on_player_connected(id):
 	print("Player connected: ", id)

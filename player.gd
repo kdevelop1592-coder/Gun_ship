@@ -9,7 +9,11 @@ const MAX_ZOOM = 40.0
 var camera_offset = Vector3.ZERO
 var wake_particles: GPUParticles3D
 
+var max_health: float = 100.0
+var current_health: float = 100.0
+
 func _ready():
+	add_to_group("player")
 	setup_wake_particles()
 	
 	# 시각적 요소(배, 대포)들을 묶어서 180도 회전하던 꼼수 코드를 완전히 제거했습니다!
@@ -108,6 +112,8 @@ func fire_cannon(side: int):
 	if not cannonball_scene: return
 	
 	var ball = cannonball_scene.instantiate()
+	ball.shooter_name = name
+	
 	var game_container = get_node_or_null("/root/Main/GameContainer")
 	if game_container:
 		game_container.add_child(ball)
@@ -179,3 +185,20 @@ func _physics_process(delta):
 	# Update camera position to follow ship
 	if camera.top_level:
 		camera.global_position = global_position + camera_offset
+
+# 데미지를 입었을 때 호출되는 함수
+@rpc("any_peer", "call_local")
+func take_damage(amount: float):
+	if not is_multiplayer_authority():
+		return
+	
+	current_health -= amount
+	print("플레이어 피격! 남은 체력: ", current_health)
+	
+	if current_health <= 0:
+		die()
+
+func die():
+	print("플레이어 파괴됨!")
+	# 폭발 파티클 재생 등을 여기에 추가할 수 있습니다.
+	queue_free()
