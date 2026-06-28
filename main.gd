@@ -80,13 +80,15 @@ func _start_game():
 	var sea = MeshInstance3D.new()
 	var plane_mesh = PlaneMesh.new()
 	plane_mesh.size = Vector2(500, 500) # 바다 크기
+	# 파도를 렌더링하기 위해 정점(Vertex)을 대폭 늘려줍니다
+	plane_mesh.subdivide_width = 200
+	plane_mesh.subdivide_depth = 200
 	sea.mesh = plane_mesh
 	
-	var sea_mat = StandardMaterial3D.new()
-	sea_mat.albedo_color = Color(0.15, 0.45, 0.75, 0.85) # 푸른 바다색
-	sea_mat.roughness = 0.1
-	sea_mat.metallic = 0.1
-	sea_mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	var sea_mat = ShaderMaterial.new()
+	var shader = preload("res://water.gdshader")
+	sea_mat.shader = shader
+	# 필요하다면 파라미터 미세 조정 (Shader에 기본값이 있으므로 생략 가능)
 	sea.material_override = sea_mat
 	
 	# 물이 배보다 약간 아래에 위치하도록 Y값 조정
