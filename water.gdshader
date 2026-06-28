@@ -9,9 +9,11 @@ uniform float roughness = 0.1;
 
 // Gerstner Wave Properties
 // Direction X, Direction Z, Steepness, Wavelength
-uniform vec4 wave1 = vec4(1.0, 0.5, 0.2, 10.0);
-uniform vec4 wave2 = vec4(-0.2, 0.7, 0.15, 6.0);
-uniform vec4 wave3 = vec4(0.8, -0.6, 0.1, 4.0);
+uniform vec4 wave1 = vec4(1.0, 0.5, 0.2, 50.0);
+uniform vec4 wave2 = vec4(-0.2, 0.7, 0.15, 30.0);
+uniform vec4 wave3 = vec4(0.8, -0.6, 0.1, 20.0);
+
+varying float wave_height;
 
 uniform float speed = 1.0;
 
@@ -64,18 +66,19 @@ void vertex() {
     
     vec3 normal = normalize(cross(binormal, tangent));
     
+    wave_height = p.y;
     VERTEX = p;
     NORMAL = normal;
 }
 
 void fragment() {
     // 높이에 따른 수심 색상 보간 (깊을수록 짙은 파란색)
-    float height_mix = smoothstep(-1.0, 1.0, VERTEX.y);
+    float height_mix = smoothstep(-1.0, 1.0, wave_height);
     vec3 final_color = mix(deep_color, albedo_color, height_mix);
     
     // 마루(Crest) 부근에 밝은 거품(Foam) 효과 살짝 추가
-    if (VERTEX.y > 0.8) {
-        final_color = mix(final_color, vec3(0.9, 0.95, 1.0), smoothstep(0.8, 1.5, VERTEX.y));
+    if (wave_height > 0.8) {
+        final_color = mix(final_color, vec3(0.9, 0.95, 1.0), smoothstep(0.8, 1.5, wave_height));
     }
     
     ALBEDO = final_color;
