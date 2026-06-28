@@ -5,3 +5,5 @@ res://cannonball.tscn
 res://main.gd
 res://enemy.tscn
 res://enemy.gd
+res://water.gdshader
+res://public/image/kenney_pirate-kit/License.txt
